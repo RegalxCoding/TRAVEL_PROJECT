@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dest_input.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <!-- outer box inside body -->
+    <div class="wrapper">
+        <header>
+            <!--  -->
+            <div class="navbar">
+                <nav>
+                    <h1>PUNE PATHFINDER</h1>
+                    <ul>
+                        <a href="/"><li>Home</li></a>
+                        <li>About</li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!--Categories btn section start  -->
+        <div class="categories">
+                <a href="/mountain/">
+                    <ul class="btn">
+                        <li>Mountains</li>
+                    </ul>
+                </a>
+                <a href="/Temples/">
+                    <ul class="btn">
+                        <li>Temples</li>
+                    </ul>
+                </a>
+                <a href="/Forts/">
+                    <ul class="btn">
+                        <li>Forts</li>
+                    </ul>
+                </a>
+                <a href="/Picnic/">
+                    <ul class="btn">
+                        <li>Picnic Spots</li>
+                    </ul>
+                </a>
+        </div>
+        <!--Categories btn section end  -->
+        
+        <div class="display-box">
+            {% for d in destination %}
+            <table>
+              
+                <tr>
+                    <td class="image"><img src="/media/{{d.dest_image}}" alt=""></td>
+
+                    <td class="description"><ul>
+                        <li><h1 style="text-align: center;">{{d.dest_title}}</h1></li>
+                        <li>{{d.dest_desc}}</li>
+                    </ul></td>
+                    <td class="tips">
+
+                        <ul>
+                            <li>TRAVELLING TIPS:</li>
+                            <br>
+                            <li>{{d.dest_tip1}}</li>
+                            <br>
+                            <li>{{d.dest_tip2}}</li>
+                            <br>
+                            <li>{{d.dest_tip3}}</li>
+                            <br>
+                            <li>{{d.dest_tip4}}</li>
+                            <br>
+                            <li>{{d.dest_tip5}}</li>
+
+                        </ul>
+
+                    </td>
+                </tr>
+                
+            </table>
+            {% endfor %}
+        </div>
+
+
+
+    </div>
+</body>
+</html>
