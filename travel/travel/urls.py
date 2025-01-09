@@ -27,6 +27,7 @@ urlpatterns = [
     path('Temples/',Temples),
     path('Forts/',Forts),
     path('Picnic/',Picnic),
+    path('register/',register_page,name='register_page')
 ]
 
 if settings.DEBUG:

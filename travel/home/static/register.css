@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oi&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    display: flex;
+    min-height: 100vh ;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background:url(./background.jpg) no-repeat center center/cover;
+}
+
+/* styles.css */
+
+
+.form-container {
+    width: 600px; /* Allow the form container to be responsive */
+    /* max-width: 400px; Set a max width to prevent it from becoming too wide */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #e45353;
+    /* border: 2px solid seagreen; */
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    font-size: x-large;
+}
+
+label {
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.6);
+}
+label:hover{
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.496), 0 0 20px rgba(255, 255, 255, 0.6); /* Enhanced glow on hover */
+}
+
+input {
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #faf7f7;
+    border-radius: 7px;
+    font-size: 20px;
+    
+}
+input:hover{
+    box-shadow: 5px 5px 5px black;
+    transition: all 0.4s ease-in-out;
+}
+
+button {
+    /* padding: 20px 40px; */
+    font-weight: 500;
+    font-size: 24px;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: rgba(83, 234, 78, 0.751);
+    outline: none;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    list-style: none;
+    box-shadow: 2px 2px 5px black;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    /* transform: translateX(2px) translateY(2px); */
+    box-shadow: 0px 0px 1px black;
+    background-color: rgb(137, 245, 131);
+}
+
+/* Add media query for better responsiveness on smaller screens */
+@media (max-width: 600px) {
+    .form-container {
+        width: 95%; /* Make the form container a little wider on small screens */
+        padding: 15px;
+    }
+
+    input, button {
+        font-size: 16px; /* Increase the font size for easier readability */
+    }
+}
+a{
+    text-decoration: none;
+    
+}
+
+

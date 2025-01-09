@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class dest_input(models.Model):
@@ -12,6 +13,9 @@ class dest_input(models.Model):
     dest_tip3=models.TextField()
     dest_tip4=models.TextField(default="BEST OF LUCK")
     dest_tip5=models.TextField(default="HAVE A GREAT TRIP")
+
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
+    
   
 
    
