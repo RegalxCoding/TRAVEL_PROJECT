@@ -21,13 +21,17 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('',destination,name='destination'),
+    path('',login_page,name='login_page'),
+    path('login/',login_page,name='login_page'),
+    path('destination/',destination,name='destination'),
     path('admin/', admin.site.urls),
     path('mountain/',mountains),
     path('Temples/',Temples),
     path('Forts/',Forts),
     path('Picnic/',Picnic),
-    path('register/',register_page,name='register_page')
+    path('register/',register_page,name='register_page'),
+    path('logout/',logout_page,name='logout_page')
+ 
 ]
 
 if settings.DEBUG:

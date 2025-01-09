@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="{% static 'register.css' %}">
-    <title>Document</title>
+    <title>Register</title>
 </head>
 <body>
         
@@ -14,29 +14,33 @@
                 <h2>REGISTER</h2>
                 {% csrf_token %}
                 <label for="firstname">FirstName:</label>
-                <input type="text" id="firstname" name="first_name" required>
+                <input type="text" id="firstname" name="first_name" placeholder="Enter First Name"required>
                 
                 <label for="lastname">LastName:</label>
-                <input type="text" id="lastname" name="last_name" required>
+                <input type="text" id="lastname" name="last_name" placeholder="Enter Last Name"required>
                
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" placeholder="Enter Username"  autocomplete="off" required>
                 
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <p>Already have Account?<a href="./login.html">Login </a></p><br>
+                <input type="password"  id="password"name="password" placeholder="Enter Password" autocomplete="off" required>
+
                 {% if messages %}
-            
+                {% for msg in messages %}
                 <div class="alert">
-                    {% for msg in messages %}
-                    {{msg}}
-                    {% endfor %}
+                    
+                    <p>{{msg}}</p>
+                    
                 </div>
+                {% endfor %}
                 {% endif %}
                 <!-- <ul class="messages">
                     <li>{% if message.tags %} class="{{message.tags}}"{% endif %}>{{msg}}</li>
                 </ul> -->
-                <button type="submit">Register</button>
+                <br>
+                <button type="submit">Register</button><br>
+                <p>Already have an Account ? <a href="/login/"> Login here </a></p><br>
+
             </form>
 </body>
 </html>

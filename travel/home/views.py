@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def mountains(request):
@@ -63,7 +64,7 @@ def register_page(request):
 
         user=User.objects.filter(username=username)
         if user.exists():
-            messages.info(request,'User already exist')
+            messages.error(request,'User already exist')
             return redirect('/register/')
         
         user=User.objects.create(
@@ -76,3 +77,31 @@ def register_page(request):
         messages.info(request,"User Registered Successfully")
         return redirect('/register/')
     return render(request,'register.html')
+
+def login_page(request):
+    if request.method=="POST":
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+
+        # user=User.objects.filter(username=username)
+        if not User.objects.filter(username=username).exists():
+            messages.error(request,'Invalid Username')
+            return redirect('/login/')
+        
+        user=authenticate(username=username,password=password)
+        
+        if user is None:
+            messages.error(request,'Invalid Password')
+            return redirect('/login/')
+        
+        else:
+            login(request,user)
+            return redirect('/destination/')
+
+
+    return render(request,'login.html')
+
+def logout_page(request):
+    logout(request)
+    return redirect('/login/')
+    
