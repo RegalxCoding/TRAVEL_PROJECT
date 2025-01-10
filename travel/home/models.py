@@ -15,6 +15,19 @@ class dest_input(models.Model):
     dest_tip5=models.TextField(default="HAVE A GREAT TRIP")
 
     user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
+
+class Destination(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    dest_title=models.CharField(max_length=255)
+    dest_desc=models.TextField()
+    dest_image=models.ImageField(upload_to='static/')
+
+class SavedDestination(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    # You can add a timestamp to track when it was saved
+    saved_at = models.DateTimeField(auto_now_add=True)
+    
     
   
 
