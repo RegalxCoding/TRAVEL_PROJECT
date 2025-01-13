@@ -17,8 +17,8 @@
                     <h1>PUNE PATHFINDER</h1>
                     <ul>
                         <a href="/destination/"><li>Home</li></a>
-                        <li>About</li>
                         <li>Hi {{ request.user.username }} !</li>
+                        <a href="/dashboard/"><li>Dashboard</li></a>
                         <li>{% if request.user.is_authenticated %}
                             <a href="/logout/" >Logout</a>
                             {%else%}
@@ -41,6 +41,12 @@
                         <li>Temples</li>
                     </ul>
                 </a>
+                <a href="/Historical/">
+                    <ul class="btn">
+                        <li>Historical Places</li>
+                    </ul>
+                </a>
+
                 <a href="/Forts/">
                     <ul class="btn">
                         <li>Forts</li>
@@ -92,11 +98,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><a href="/dashboard/">
-                        <ul class="save-btn">
-                            <li>Save Destination</li>
-                        </ul>
-                    </a></td>
+                    <td>
+                        <a href="/save/{{d.id}}">
+                            <ul class="save-btn">
+                                <li>Save Destination</li>
+                            </ul>
+                        </a>
+                    </td>
                 </tr>
                 
             </table>

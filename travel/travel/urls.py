@@ -27,12 +27,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('mountain/',mountains),
     path('Temples/',Temples),
+    path('Historical/',Historical),
     path('Forts/',Forts),
     path('Picnic/',Picnic),
     path('register/',register_page,name='register_page'),
     path('logout/',logout_page,name='logout_page'),
     path('dashboard/',dashboard,name='dashboard'),
-    path('save/', save_destination, name='save_destination'),
+    path('save/<id>',save_destination,name='save_destination'),
  
 ]
 

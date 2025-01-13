@@ -14,43 +14,34 @@ def mountains(request):
 
 @login_required(login_url='/login/')
 def dashboard(request):
-    destinations = Destination.objects.filter(user=request.user)
-    return render(request, 'dashboard.html', {'destinations': destinations})
+   destinations=Destination.objects.filter(user=request.user)
+   return render(request,'dashboard.html',{'saved_destinations':destinations})
 
-#view saved destination
-@login_required(login_url='/login/')
-def save_destination(request):
-    if request.method=="POST":
-        data=request.POST
-        dest_image=request.FILES.get('dest_image')
-        dest_desc=data.get('dest_desc')
-        dest_tip1=data.get('dest_tip1')
-        dest_tip2=data.get('dest_tip2')
-        dest_tip3=data.get('dest_tip3')
-        title=data.get('title')
-        dest_tip4=data.get('dest_tip4')
-        dest_tip5=data.get('dest_tip5')
+def save_destination(request,id):
+    if id:
+        queryset=dest_input.objects.get(id=id)
+        dest_title=queryset.dest_title
+        dest_desc=queryset.dest_desc
+        dest_image=queryset.dest_image
 
         Destination.objects.create(
-            dest_image=dest_image,
+            user=request.user,
+            dest_title=dest_title,
             dest_desc=dest_desc,
-            dest_tip1=dest_tip1,
-            dest_tip2=dest_tip2,
-            dest_tip3=dest_tip3,
-            dest_title=title,
-            dest_tip4=data.get('dest_tip4'),
-            dest_tip5=data.get('dest_tip5')
+            dest_image=dest_image
         )
-        return redirect('/dashboard/')
-    queryset=dest_input.objects.all()
-    context={'dashboard':queryset}
+        return redirect('/destination/')
+    return redirect('/destination/')
 
-    return render(request,'dashboard.html',context)
 
-         # Redirect to the dashboard to view saved destinations
 
 def Temples(request):
     queryset=dest_input.objects.filter(dest_category='Temples')
+    context={'destination':queryset}
+    return render(request,'dest_input.html',context)
+
+def Historical(request):
+    queryset=dest_input.objects.filter(dest_category='Historical')
     context={'destination':queryset}
     return render(request,'dest_input.html',context)
 
